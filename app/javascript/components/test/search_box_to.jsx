@@ -4,6 +4,11 @@ const REACT_APP_GOOGLE_MAPS_KEY = 'AIzaSyD8fy2aAdQCyjZNjWVgDVkb3QlPUvLNpfc';
 
 let autoComplete;
 
+const baseUrl = 'http://localhost:3000';
+
+const endpoint = '/api/v1/queries/create';
+
+const complete_url = baseUrl + endpoint;
 
 const loadScript = (url, callback) => {
   let script = document.createElement("script");
@@ -24,7 +29,7 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-const SearchLocationTo = ({ setSelectedLocation }) => {
+const SearchLocationTo = ({ }) => {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
 
@@ -43,20 +48,43 @@ const SearchLocationTo = ({ setSelectedLocation }) => {
   };
 
   const handlePlaceSelect = async (updateQuery) => {
-    const addressObject = await autoComplete.getPlace();
-
-    const query = addressObject.formatted_address;
-    updateQuery(query);
-    console.log({ query });
-
-    const latLng = {
-      lat: addressObject?.geometry?.location?.lat(),
-      lng: addressObject?.geometry?.location?.lng(),
-    };
-
-    console.log({ latLng });
-    setSelectedLocation(latLng);
+    try {
+      const addressObject = await autoComplete.getPlace();
+  
+      const query = addressObject.formatted_address;
+      updateQuery(query);
+      console.log({ query });
+  
+      const latLng = {
+        lat: addressObject?.geometry?.location?.lat(),
+        lng: addressObject?.geometry?.location?.lng(),
+      };
+  
+      console.log({ latLng });
+  
+      const response = await fetch(complete_url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+          { query: {
+            currency_code: JSON.stringify(latLng)
+            }
+          }
+        ),
+      });
+  
+      if (response.ok) {
+        console.log('Query created');
+      } else {
+        console.error('Rails Error');
+      }
+    } catch (erro) {
+      console.error('Request Error:', erro);
+    }
   };
+  
 
   useEffect(() => {
     loadScript(
@@ -71,7 +99,7 @@ const SearchLocationTo = ({ setSelectedLocation }) => {
         ref={autoCompleteRef}
         className="form-control"
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="To"
+        placeholder="Where is the final destination for your product?"
         value={query}
       />
     </div>
