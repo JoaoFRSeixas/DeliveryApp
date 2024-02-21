@@ -69,7 +69,17 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
+
+gem 'interactor'
+
+gem 'httparty'
+gem 'rubocop', '~> 1.60', require: false
+gem 'uri'
+
+gem 'pry'
+gem 'pry-doc'
+
