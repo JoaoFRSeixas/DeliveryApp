@@ -4,14 +4,14 @@ require 'httparty'
 module GetJob # rubocop:disable Metrics/ClassLength,Style/Documentation
   extend self
 
-  attr_accessor :job
 
-  def call(job)
-    return get_job.errors unless get_job.code != 200
-    get_job
+  def call
+    # return get_job.errors unless get_job.code != 200
+    # get_job
+    response_example
   end
 
-  private
+
   def response_example
     @response_example = {
       "job_number": "string",
@@ -117,7 +117,6 @@ module GetJob # rubocop:disable Metrics/ClassLength,Style/Documentation
       },
       "can_process_checkout": true,
       "delivery_options": [
-        null
       ],
       "job_comment": "string",
       "external_data": {
@@ -130,7 +129,7 @@ module GetJob # rubocop:disable Metrics/ClassLength,Style/Documentation
       }
     }
   end
-
+private
   def get_job
     @get_job = HTTParty.get( "https://api.xandar.instaleap.io/jobs/#{job.id}", headers)
   end

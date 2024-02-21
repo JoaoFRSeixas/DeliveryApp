@@ -83,3 +83,4 @@ gem 'uri'
 gem 'pry'
 gem 'pry-doc'
 
+gem 'rack-cors', require: 'rack/cors'

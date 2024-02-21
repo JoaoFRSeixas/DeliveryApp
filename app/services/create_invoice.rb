@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'httparty'
-module CreateJob # rubocop:disable Metrics/ClassLength,Style/Documentation
+module CreateInvoice # rubocop:disable Metrics/ClassLength,Style/Documentation
   extend self
 
   attr_accessor :job

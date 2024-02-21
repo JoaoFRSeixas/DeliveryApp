@@ -2,7 +2,7 @@
 
 require 'httparty'
 
-module RequestAvaliability # rubocop:disable Style/Documentation
+module RequestAvaliability# rubocop:disable Style/Documentation
   extend self
 
   attr_accessor :query
@@ -12,15 +12,19 @@ module RequestAvaliability # rubocop:disable Style/Documentation
 
 
   def call(query)
-    fetch_availability
+    #API key is not available now, so I will use a response exampĺe to render
+
+    #fetch_availability
+    
+    response_example
   end
 
   private
 
-  def response_example
+  def response_example # rubocop:disable Metrics/MethodLength
     @response_example = [
       {
-        "id": "first_id",
+        "id": "your_first_slot_id",
         "from": "2024-02-20T20:35:52.575Z",
         "to": "2024-02-20T20:35:52.575Z",
         "store": {
@@ -32,7 +36,7 @@ module RequestAvaliability # rubocop:disable Style/Documentation
         "expires_at": "2024-02-20T20:35:52.575Z"
       },
       {
-        "id": "second_slot_id",
+        "id": "your_second_slot_id",
         "from": "2024-02-20T20:35:52.575Z",
         "to": "2024-02-20T20:35:52.575Z",
         "store": {

@@ -4,7 +4,7 @@ class CreateQuery
   include Interactor
 
   def call
-    context.query = Query.build(context.params)
+    context.query = Query.new(context.params)
     context.save! unless context.fail!
   end
 

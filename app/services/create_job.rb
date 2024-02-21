@@ -7,9 +7,13 @@ module CreateJob # rubocop:disable Metrics/ClassLength,Style/Documentation
   attr_accessor :query
 
   def call(query)
-    return request_job.errors unless request_job.code != 200
-    job = Job.new(request_job)
-    job.save
+
+    #API key is not available now, so I will use a response exampĺe to render
+    # job = Job.new(request_job)
+    # job.save
+
+    # return request_job.errors unless request_job.code != 200
+    response_example
   end
 
   private
