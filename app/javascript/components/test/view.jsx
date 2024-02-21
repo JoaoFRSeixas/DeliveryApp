@@ -1,49 +1,36 @@
-import { useRef, useState } from 'react'
-import Map from '../test/places'
+import React from "react";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 
+const REACT_APP_GOOGLE_MAPS_KEY = 'AIzaSyD8fy2aAdQCyjZNjWVgDVkb3QlPUvLNpfc';
 
-function View() {
+const MapComponent = ({ selectedLocation }) => {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: REACT_APP_GOOGLE_MAPS_KEY,
+  });
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+  if (loadError) return "Error";
+  if (!isLoaded) return "Maps";
 
-  const inputRef = useRef()
-  const inputStyle= {
-    boxShadow: 'inset 0 0 10px #eee !important',
-    border: '2px solid #eee',
-    width: '456px',
-    height: '40px',
-    marginLeft: '16px',
-    borderRadius: '20px',
-    fontWeight: '300 !important',
-    outline: 'none',
-    padding: '10px 20px',
-    marginBottom: '10px',
-  }
-
-
-  const autoComplete = new window.google.maps.places.Autocomplete(
-    inputRef.current,
-  )
-
-
-  autoComplete.addListener('place_changed', () => {
-    const place = autoComplete.getPlace()
-    if (!place.geometry || !place.geometry.location) {
-        alert("this location not available")
-    }
-    if (place.geometry.viewport || place.geometry.location) {
-        console.log(place.geometry.location)
-    }
-  })
   return (
-    <div className="App">
-        <label >Location</label>
-        <input
-          placeholder='type your location'
-          ref={inputRef}
-          style={inputStyle}
+    <div style={{ marginTop: "50px" }}>
+      <GoogleMap
+        mapContainerStyle={{
+          height: "800px",
+        }}
+        center={selectedLocation}
+        zoom={13}
+        onLoad={onMapLoad}
+      >
+        <MarkerF
+          position={selectedLocation}
+          icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
         />
-      <Map/>
+      </GoogleMap>
     </div>
-  )
-}
+  );
+};
 
-export default View
+export default MapComponent;

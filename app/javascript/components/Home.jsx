@@ -1,7 +1,10 @@
 import { Button } from "bootstrap";
 import React from "react";
 import { Link, Form } from "react-router-dom";
-import Map from '../components/test/view'
+import SearchLocationFrom from "./test/search_box_from";
+import SearchLocationTo from "./test/search_box_to";
+
+
 export default () => {
   return (
     <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
@@ -12,6 +15,10 @@ export default () => {
             The button calls our product availability
           </p>
           <hr className="my-4" />
+          <label>From:</label>
+          <SearchLocationFrom />
+          <label>To:</label>
+          <SearchLocationTo />
           <Link
             to="/avaliability"
             className="btn btn-lg custom-button"
@@ -19,8 +26,6 @@ export default () => {
           >
             Query avaliability
           </Link>
-
-          <Map/>
         </div>
       </div>
     </div>

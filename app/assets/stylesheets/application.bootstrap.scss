@@ -14,9 +14,15 @@
   color: #293241;
 }
 .custom-button.btn {
+  margin-top: 10px;
   background-color: #293241;
   color: #FFF;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 .hero {
   width: 100vw;
