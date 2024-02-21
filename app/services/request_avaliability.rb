@@ -17,6 +17,35 @@ module RequestAvaliability # rubocop:disable Style/Documentation
 
   private
 
+  def response_example
+    @response_example = [
+      {
+        "id": "first_id",
+        "from": "2024-02-20T20:35:52.575Z",
+        "to": "2024-02-20T20:35:52.575Z",
+        "store": {
+          "id": "string",
+          "name": "string"
+        },
+        "description": "string",
+        "operational_model": "PICK_AND_DELIVERY",
+        "expires_at": "2024-02-20T20:35:52.575Z"
+      },
+      {
+        "id": "second_slot_id",
+        "from": "2024-02-20T20:35:52.575Z",
+        "to": "2024-02-20T20:35:52.575Z",
+        "store": {
+          "id": "string",
+          "name": "string"
+        },
+        "description": "string",
+        "operational_model": "PICK_AND_COLLECT",
+        "expires_at": "2024-02-20T20:35:52.575Z"
+      }
+    ]
+  end
+
   def fetch_availability
     HTTParty.post(BASE_URL, headers: headers, body: body.to_json)
   end

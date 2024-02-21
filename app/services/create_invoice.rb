@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'httparty'
-module CreateJob 
-   # rubocop:disable Metrics/ClassLength,Style/Documentation
-   extend self
+module CreateJob # rubocop:disable Metrics/ClassLength,Style/Documentation
+  extend self
 
-   attr_accessor :job
+  attr_accessor :job
 
   def call(job)
     return create_invoice.errors unless create_invoice.code != 200
@@ -13,6 +12,63 @@ module CreateJob
   end
 
   private
+
+  def response_example
+    @response_example = {
+      "currencyCode": "string",
+      "prices": {
+        "subtotal": 0,
+        "shippingFee": 0,
+        "discounts": 0,
+        "taxes": 0,
+        "order_value": 0,
+        "attributes": [
+          {
+            "type": "ORDER_VALUE",
+            "name": "string",
+            "value": 0
+          },
+          {
+            "type": "string",
+            "name": "string",
+            "value": 0
+          },
+          {
+            "type": "string",
+            "name": "string",
+            "value": 0
+          },
+          {
+            "type": "string",
+            "name": "string",
+            "value": 0
+          },
+          {
+            "type": "string",
+            "name": "string",
+            "value": 0
+          }
+        ]
+      },
+      "payment": {
+        "id": "string",
+        "payment_status": "FAILED",
+        "method": "CASH",
+        "reference": "string",
+        "value": 0,
+        "payment_status_details": "string",
+        "method_details": "string",
+        "blocking_policy": "CHECKOUT",
+        "metadata": {}
+      },
+      "invoice": {
+        "reference": "string",
+        "attachments": [
+          "string"
+        ]
+      }
+    }
+  end
 
   def create_invoice
     @request_job = HTTParty.put("https://api.xandar.instaleap.io/jobs/#{jobId}/payment_info", headers:, body: body.to_json)

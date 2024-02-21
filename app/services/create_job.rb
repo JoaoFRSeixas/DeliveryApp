@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'httparty'
-module CreateJob 
-   # rubocop:disable Metrics/ClassLength,Style/Documentation
-   extend self
+module CreateJob # rubocop:disable Metrics/ClassLength,Style/Documentation
+  extend self
 
-   attr_accessor :query
+  attr_accessor :query
 
   def call(query)
     return request_job.errors unless request_job.code != 200
@@ -14,6 +13,14 @@ module CreateJob
   end
 
   private
+
+  def response_example
+    @response_example =
+    {
+      "message": "string",
+      "job_id": "string"
+    }
+  end
 
   def request_job
     @request_job = HTTParty.post( 'https://api.xandar.instaleap.io/jobs', headers:, body: body.to_json)
