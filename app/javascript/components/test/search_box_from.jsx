@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const REACT_APP_GOOGLE_MAPS_KEY = 'AIzaSyD8fy2aAdQCyjZNjWVgDVkb3QlPUvLNpfc';
+const REACT_APP_GOOGLE_MAPS_KEY = '';
 
 let autoComplete;
 

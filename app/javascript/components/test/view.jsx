@@ -1,7 +1,7 @@
 import React from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 
-const REACT_APP_GOOGLE_MAPS_KEY = 'AIzaSyD8fy2aAdQCyjZNjWVgDVkb3QlPUvLNpfc';
+const REACT_APP_GOOGLE_MAPS_KEY = '';
 
 const MapComponent = ({ selectedLocation }) => {
   const { isLoaded, loadError } = useLoadScript({
