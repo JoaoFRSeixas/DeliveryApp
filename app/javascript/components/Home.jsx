@@ -1,8 +1,6 @@
-import { Button } from "bootstrap";
 import React from "react";
 import { Link, Form } from "react-router-dom";
-import SearchLocationFrom from "./test/search_box_from";
-import SearchLocationTo from "./test/search_box_to";
+import SearchLocationTo from "./search_box/search_box_to";
 
 
 export default () => {

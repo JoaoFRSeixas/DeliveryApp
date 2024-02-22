@@ -1,5 +1,5 @@
-import SearchLocationFrom from "./test/search_box_from";
-import MapComponent from "../components/test/view";
+import SearchLocationFrom from "./search_box/search_box_from";
+import MapComponent from "../components/search_box/view";
 import React from "react";
 
 const Maps = () =>{
