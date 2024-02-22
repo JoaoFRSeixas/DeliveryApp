@@ -7,6 +7,8 @@ Prerequisites:
 
 Install yarn
 
+React: "18.2.0"
+
 Ruby version: "3.1.2"
 
 Rails version: "7.0.4"
