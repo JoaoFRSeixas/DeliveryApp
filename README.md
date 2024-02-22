@@ -5,8 +5,9 @@ In order, with it you can: (1) check the availability of send a product to the e
 
 Prerequisites:
 
-* Ruby version: "3.1.2"
-* Rails version: "7.0.4"
+Install yarn
+Ruby version: "3.1.2"
+Rails version: "7.0.4"
 
 * Configuration
   (1) Clone this repo;
