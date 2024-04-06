@@ -1,6 +1,5 @@
 # DeliveryApp
-
-
+App created during the technical interview stage for a last-mile logistics company.
 In order, with it you can: (1) check the availability of send a product to the end customer (2) generate a new order, (3) check its status and (4) generate invoices.
 
 Prerequisites:
